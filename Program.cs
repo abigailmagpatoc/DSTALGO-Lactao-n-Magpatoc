@@ -30,6 +30,35 @@ namespace DSTALGO_Lactao_n_Magpatoc
         public class HeadsUp
         {
             List<string> headsUpCustomer = new List<string>();
+
+            public void BookAppoint(int treatment)
+            {
+                if (treatment == 1)
+                {
+                    Console.Write("Enter name: ");
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    string custName = Convert.ToString(Console.ReadLine());
+                    Console.ForegroundColor = ConsoleColor.Gray;
+                    headsUpCustomer.Add(custName);
+
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("\nAppointment has been made! See you at the salon!");
+                    Console.ForegroundColor = ConsoleColor.Gray;
+                }
+                else if (treatment == 2)
+                {
+                    Console.Write("Enter name: ");
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    string custName = Convert.ToString(Console.ReadLine());
+                    Console.ForegroundColor = ConsoleColor.Gray;
+                    headsUpCustomer.Add(custName);
+
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("\nAppointment has been made! See you at the salon!");
+                    Console.ForegroundColor = ConsoleColor.Gray;
+                }
+            }
+
             public void Customer()
             {
                 
@@ -50,30 +79,7 @@ namespace DSTALGO_Lactao_n_Magpatoc
                     int service = Convert.ToInt32(Console.ReadLine());
                     Console.ForegroundColor = ConsoleColor.Gray;
 
-                    if (service == 1)
-                    {
-                        Console.Write("Enter name: ");
-                        Console.ForegroundColor = ConsoleColor.Yellow;
-                        string custName = Convert.ToString(Console.ReadLine());
-                        Console.ForegroundColor = ConsoleColor.Gray;
-                        headsUpCustomer.Add(custName);
-
-                        Console.ForegroundColor = ConsoleColor.Green;
-                        Console.WriteLine("\nAppointment has been made! See you at the salon!");
-                        Console.ForegroundColor = ConsoleColor.Gray;
-                    }
-                    if (service == 2)
-                    {
-                        Console.Write("Enter name: ");
-                        Console.ForegroundColor = ConsoleColor.Yellow;
-                        string custName = Convert.ToString(Console.ReadLine());
-                        Console.ForegroundColor = ConsoleColor.Gray;
-                        headsUpCustomer.Add(custName);
-
-                        Console.ForegroundColor = ConsoleColor.Green;
-                        Console.WriteLine("\nAppointment has been made! See you at the salon!");
-                        Console.ForegroundColor = ConsoleColor.Gray;
-                    }
+                    
                 }
                 if (choice == 2)
                 {
