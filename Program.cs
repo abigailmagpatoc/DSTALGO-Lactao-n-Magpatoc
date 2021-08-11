@@ -33,6 +33,7 @@ namespace DSTALGO_Lactao_n_Magpatoc
 
             public void BookAppoint(int treatment)
             {
+
                 if (treatment == 1)
                 {
                     Console.Write("Enter name: ");
@@ -59,6 +60,16 @@ namespace DSTALGO_Lactao_n_Magpatoc
                 }
             }
 
+            public void ViewAppoint()
+            {
+                foreach (string items in headsUpCustomer)
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.Write("\t" + items + "\n\t");
+                    Console.ForegroundColor = ConsoleColor.Gray;
+                }
+            }
+
             public void Customer()
             {
                 
@@ -78,17 +89,12 @@ namespace DSTALGO_Lactao_n_Magpatoc
                     Console.ForegroundColor = ConsoleColor.Yellow;
                     int service = Convert.ToInt32(Console.ReadLine());
                     Console.ForegroundColor = ConsoleColor.Gray;
-
+                    BookAppoint(service);
                     
                 }
                 if (choice == 2)
                 {
-                    foreach (string items in headsUpCustomer)
-                    {
-                        Console.ForegroundColor = ConsoleColor.Yellow;
-                        Console.Write("\t" + items + "\n\t");
-                        Console.ForegroundColor = ConsoleColor.Gray;
-                    }
+                    ViewAppoint();
                 }
                 if (choice == 3)
                 {
