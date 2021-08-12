@@ -190,7 +190,7 @@ namespace DSTALGO_Lactao_n_Magpatoc
                 {
                     Console.Write("Search customer name : ");
                     Console.ForegroundColor = ConsoleColor.Yellow;
-                    string custName = Convert.ToString(Console.ReadLine()); //Search song title - searchST
+                    string custName = Convert.ToString(Console.ReadLine());
                     Console.ForegroundColor = ConsoleColor.Gray;
                     string time;
                     if (headsUpCustomer.TryGetValue(custName, out time))
