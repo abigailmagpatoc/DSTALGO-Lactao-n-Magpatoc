@@ -16,6 +16,8 @@ namespace DSTALGO_Lactao_n_Magpatoc
             Console.WriteLine("    A salon appointment program  ");
             Console.WriteLine("----------------------------------");
             Console.WriteLine("\n\t[1]-Customer" + "\n\t[2]-Salon Staff");
+            
+           
             Console.Write("\nLogin as : ");
             Console.ForegroundColor = ConsoleColor.Green;
             int user = Convert.ToInt32(Console.ReadLine());
@@ -25,22 +27,26 @@ namespace DSTALGO_Lactao_n_Magpatoc
             {
                 headsUp.Customer();
             }
-            if (user == 2)
+
+            while (true)
             {
-                Console.Write("\nUsername : ");
-                string uname = Convert.ToString(Console.ReadLine());
-                Console.Write("Password : ");
-                string pwd = Convert.ToString(Console.ReadLine());
-                if (uname.Equals("Admin") && pwd.Equals("Admin"))
+                if (user == 2)
                 {
-                    headsUp.Staff();
-                }
-                else
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.Write("\nInvalid Username/Password");
+                    Console.Write("\nUsername : ");
+                    string uname = Convert.ToString(Console.ReadLine());
+                    Console.Write("Password : ");
+                    string pwd = Convert.ToString(Console.ReadLine());
+                    if (uname.Equals("Admin") && pwd.Equals("Admin"))
+                    {
+                        headsUp.Staff();
+                    }
+                    else
+                        Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Invalid Username/Password");
                     Console.ForegroundColor = ConsoleColor.Gray;
+                }
+                Console.ReadKey();
             }
-            Console.ReadKey();
         }
         public class HeadsUp
         {
@@ -57,15 +63,16 @@ namespace DSTALGO_Lactao_n_Magpatoc
                 headsUpCustomer.Add("0600PM", " ");
 
                 Console.WriteLine("What are you here for?");
-                Console.WriteLine("\t[1]-Book an appointment" + "\n\t[2]-View appointment schedules" +
+                
+                while (true)
+                {
+                    Console.WriteLine("\t[1]-Book an appointment" + "\n\t[2]-View appointment schedules" +
                     "\n\t[3]-Request a specific Salon Staff");
-                Console.Write("\nEnter your choice: ");
+                Console.Write("\nEnter operation: ");
                 Console.ForegroundColor = ConsoleColor.Green;
                 int choice = Convert.ToInt32(Console.ReadLine());
                 Console.ForegroundColor = ConsoleColor.Gray;
-
-                while (true)
-                {
+               
                     if (choice == 1)
                     {
                         Console.WriteLine("Which service would like to book?");
@@ -132,7 +139,7 @@ namespace DSTALGO_Lactao_n_Magpatoc
                     }
                     if (choice == 2)
                     {
-                        Console.WriteLine("\nTime          Customer Name");
+                        Console.WriteLine("\nTime       Customer Name");
                         foreach (KeyValuePair<string, string> items in headsUpCustomer)
                         {
                             Console.ForegroundColor = ConsoleColor.Yellow;
@@ -150,8 +157,6 @@ namespace DSTALGO_Lactao_n_Magpatoc
                         Console.ReadKey();
                     }
                 }
-               
-                
             }
             public void Staff()
             {
@@ -166,14 +171,14 @@ namespace DSTALGO_Lactao_n_Magpatoc
                 headsUpCustomer.Add("0600PM", " ");
                 
                 Console.WriteLine("\t[1]-View appointments" + "\n\t[2]-Search appointment");
-                Console.Write("What are you here for?");
+                Console.Write("What are you here for? ");
                 Console.ForegroundColor = ConsoleColor.Green;
                 int choice = Convert.ToInt32(Console.ReadLine());
                 Console.ForegroundColor = ConsoleColor.Gray;
 
                 if (choice == 1)
                 {
-                    Console.WriteLine("\nTime           Customer Name");
+                    Console.WriteLine("\nTime       Customer Name");
                     foreach (KeyValuePair<string, string> items in headsUpCustomer)
                     {
                         Console.ForegroundColor = ConsoleColor.Yellow;
