@@ -8,17 +8,17 @@ namespace DSTALGO_Lactao_n_Magpatoc
 {
     class Stack
     {
-        private object[] array;
+        private string[] array;
         private int top;
 
         public Stack()
         {
-            array = new object[5];
+            array = new string[5];
             top = -1;
                 
         }
 
-        public void Push(object item)
+        public void Push(string item)
         {
             if(top < array.Length-1)
             {
