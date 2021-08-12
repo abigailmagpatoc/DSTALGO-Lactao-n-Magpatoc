@@ -210,8 +210,5 @@ namespace DSTALGO_Lactao_n_Magpatoc
                 }
             }
         }
-
     }
-   
-
 }
