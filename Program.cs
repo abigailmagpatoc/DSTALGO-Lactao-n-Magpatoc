@@ -25,14 +25,14 @@ namespace DSTALGO_Lactao_n_Magpatoc
 
             int user = 0;
             user = GoHome(user);
-            bool staffLog = false;
+            bool login = false;
 
             while(true)
             {
                 if (user == 1)
                 {
-                    staffLog = true;
-                    while (staffLog)
+                    login = true;
+                    while (login)
                     {
                         Console.WriteLine("What are you here for?");
 
@@ -138,7 +138,7 @@ namespace DSTALGO_Lactao_n_Magpatoc
                                 }
                                 else if (logout == 1)
                                 {
-                                    staffLog = false;
+                                    login = false;
                                     user = GoHome(user);
                                     break;
                                 }
@@ -153,8 +153,8 @@ namespace DSTALGO_Lactao_n_Magpatoc
                 }
                 else if (user == 2)
                 {
-                    staffLog = true;
-                    while (staffLog)
+                    login = true;
+                    while (login)
                     {
                         Console.Write("\nUsername : ");
                         string uname = Convert.ToString(Console.ReadLine());
@@ -241,7 +241,7 @@ namespace DSTALGO_Lactao_n_Magpatoc
                                     }
                                     else if (logout == 1)
                                     {
-                                        staffLog = false;
+                                        login = false;
                                         user = GoHome(user);
                                         break;
                                     }
