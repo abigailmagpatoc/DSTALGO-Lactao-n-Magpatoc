@@ -122,10 +122,10 @@ namespace DSTALGO_Lactao_n_Magpatoc
                         {
                             Console.ReadKey();
                         }
-                        if (choice == 4)
-                        {
-                            Console.ReadKey();
-                        }
+                        //if (choice == 4)
+                        //{
+                        //    Console.ReadKey();
+                        //}
                     }
 
                 }
@@ -170,20 +170,18 @@ namespace DSTALGO_Lactao_n_Magpatoc
 
                         }
                         else
-                        {
                             Console.ForegroundColor = ConsoleColor.Red;
-                            Console.WriteLine("\nNo appointment found");
+                            Console.WriteLine("\nNo Appointment found");
                             Console.ForegroundColor = ConsoleColor.Gray;
-
-                        }
                     }
+                   
                 }
-                else 
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Invalid Username/Password");
-                Console.ForegroundColor = ConsoleColor.Gray;
+                else
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("\nInvalid Username/Password");
+                    Console.ForegroundColor = ConsoleColor.Gray;
 
-            }
+            } Console.ReadKey();
         }
     }
 }
