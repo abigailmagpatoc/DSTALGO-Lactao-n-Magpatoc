@@ -80,6 +80,33 @@ namespace DSTALGO_Lactao_n_Magpatoc
         }
 
 
+        private int BinarySearch(string item)
+        {
+            int lowerB = 0;
+            int upperB = index;
+            int midIndex;
+            while (lowerB <= upperB)
+            {
+                midIndex = (lowerB + upperB) / 2;
+                if (item == array[midIndex][2])
+                {
+                    return midIndex;
+
+                }
+                else if (item.CompareTo(array[midIndex][2]) == -1)
+                {
+                    upperB = midIndex - 1;
+                }
+                else if (item.CompareTo(array[midIndex][2]) == 1)
+                {
+                    lowerB = midIndex + 1;
+                }
+            }
+            return -1;
+
+        }
+
+
         public string[][] GetListArray()
         {
             string[][] tempArr = new string[index + 1][];

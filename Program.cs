@@ -52,6 +52,7 @@ namespace DSTALGO_Lactao_n_Magpatoc
                             int choice = Convert.ToInt32(Console.ReadLine());
                             Console.ForegroundColor = ConsoleColor.Gray;
 
+                            //request
                             if (choice == 1)
                             {
                                 Console.WriteLine("Which service would like to book?");
@@ -129,6 +130,8 @@ namespace DSTALGO_Lactao_n_Magpatoc
                                     Console.ReadKey();
                                 }
                             }
+
+                            //view schedule
                             if (choice == 2)
                             {
                                 Console.WriteLine("\nTime       Customer Name");
@@ -140,6 +143,8 @@ namespace DSTALGO_Lactao_n_Magpatoc
                                 }
                                 Console.ReadKey();
                             }
+                            
+                            //logout
                             if (choice == 3)
                             {
                                 user = 0;
@@ -192,6 +197,7 @@ namespace DSTALGO_Lactao_n_Magpatoc
                                 int choice = Convert.ToInt32(Console.ReadLine());
                                 Console.ForegroundColor = ConsoleColor.Gray;
 
+                                //view requested appointmetns
                                 if (choice == 1)
                                 {
                                     //Console.WriteLine("\nTime       Customer Name");
@@ -210,6 +216,7 @@ namespace DSTALGO_Lactao_n_Magpatoc
                                     
 
                                 }
+                                //search appointment
                                 else if (choice == 2)
                                 {
 
@@ -261,11 +268,13 @@ namespace DSTALGO_Lactao_n_Magpatoc
                                     Console.WriteLine();
 
                                 }
+                                //add confirmed appointment
                                 else if (choice == 3)
                                 {
-                                    Console.Write("Enter appointment key (time) : "); 
+                                    Console.Write("Enter appointment ID : "); 
                                     Console.ForegroundColor = ConsoleColor.Yellow;
-                                    string time = Convert.ToString(Console.ReadLine());
+                                    string id = Convert.ToString(Console.ReadLine());
+
                                     Console.ForegroundColor = ConsoleColor.Gray;
                                     //string custName = headsUpCustomer[time];
                                     //finalQue.Enqueue(custName);
@@ -283,14 +292,17 @@ namespace DSTALGO_Lactao_n_Magpatoc
                                     //Console.WriteLine("\nNo Appointment found");
                                     //Console.ForegroundColor = ConsoleColor.Gray;
                                 }
+                                //cancel/finish appointment
                                 else if (choice == 4)
                                 {
 
                                 }
+                                //view confirmed appointments
                                 else if (choice == 5)
                                 {
                                     finalQue.ViewQAppoints();
                                 }
+                                //logout
                                 else if (choice == 6)
                                 {
                                     user = 0;
