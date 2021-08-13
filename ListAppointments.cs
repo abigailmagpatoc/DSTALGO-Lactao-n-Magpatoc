@@ -95,10 +95,11 @@ namespace DSTALGO_Lactao_n_Magpatoc
 
             foreach (string[] record in list)
             {
+                Console.Write("\n");
                 foreach (string item in record)
                 {
-                    Console.ForegroundColor = ConsoleColor.Yellow;
-                    Console.Write("\t\t" + item);
+                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    Console.Write("\t" + item);
                     Console.ForegroundColor = ConsoleColor.Gray;
                 }
 

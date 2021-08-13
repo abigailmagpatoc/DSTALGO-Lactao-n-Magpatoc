@@ -79,7 +79,7 @@ namespace DSTALGO_Lactao_n_Magpatoc
                                         entryList[1] = time;
                                         entryList[2] = custName;
                                         Console.ForegroundColor = ConsoleColor.Gray;
-                                        entryList[3] = "Nail treatment";
+                                        entryList[3] = "Hair treatment";
                                         ListApps.Add(entryList);
                                         Console.ForegroundColor = ConsoleColor.Green;
                                         Console.Write("\nUpdating record...");
@@ -202,7 +202,7 @@ namespace DSTALGO_Lactao_n_Magpatoc
                                     //    Console.ForegroundColor = ConsoleColor.Gray;
                                     //}
 
-                                    Console.WriteLine("\tID\tTime\tCustomer Name\tTreatment");
+                                    Console.WriteLine("\tID\tTime\tCustomer   Treatment");
 
                                     ListApps.PrintList(ListApps.GetListArray());
                                     Console.ReadKey();
@@ -212,6 +212,7 @@ namespace DSTALGO_Lactao_n_Magpatoc
                                 }
                                 else if (choice == 2)
                                 {
+
                                     Console.Write("Search customer name : ");
                                     Console.ForegroundColor = ConsoleColor.Yellow;
                                     string custName = Convert.ToString(Console.ReadLine());
@@ -222,12 +223,43 @@ namespace DSTALGO_Lactao_n_Magpatoc
                                         Console.ForegroundColor = ConsoleColor.Green;
                                         Console.Write("One appointment found : " + time);
                                         Console.ForegroundColor = ConsoleColor.Gray;
-
                                     }
                                     else
+                                    {
                                         Console.ForegroundColor = ConsoleColor.Red;
-                                    Console.WriteLine("\nNo Appointment found");
-                                    Console.ForegroundColor = ConsoleColor.Gray;
+                                        Console.WriteLine("\nNo Appointment found");
+                                        Console.ForegroundColor = ConsoleColor.Gray;
+
+                                    }
+
+                                    //Console.Write("Search customer name : ");
+                                    //Console.ForegroundColor = ConsoleColor.Yellow;
+                                    //string custName = Convert.ToString(Console.ReadLine());
+                                    //Console.ForegroundColor = ConsoleColor.Gray;
+                                    //Console.WriteLine("Appointment(s) found : ");
+
+                                    //if (headsUpCustomer.ContainsValue(custName))
+                                    //{
+                                    //    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                                    //    Console.WriteLine("\t" + item.Key + "\t" + item.Value);
+                                    //    Console.ForegroundColor = ConsoleColor.Gray;
+
+
+                                    //    //foreach (KeyValuePair<string, string> item in headsUpCustomer)
+                                    //    //{
+
+                                    //    //}
+
+                                    //}
+                                    //else
+                                    //{
+                                    //    Console.ForegroundColor = ConsoleColor.Red;
+                                    //    Console.WriteLine("\nNo Appointment found");
+                                    //    Console.ForegroundColor = ConsoleColor.Gray;
+                                    //}
+                                    Console.ReadKey();
+                                    Console.WriteLine();
+
                                 }
                                 else if (choice == 3)
                                 {
