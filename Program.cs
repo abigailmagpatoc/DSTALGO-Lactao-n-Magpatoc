@@ -26,8 +26,17 @@ namespace DSTALGO_Lactao_n_Magpatoc
 
             if (user == 1)
             {
-                //Customer();
-
+                headsUp.Customer();
+                
+            }
+            Console.ReadKey();
+        }
+        public class HeadsUp
+        {
+            List<string> headsUpCustomer = new List<string>();
+            public void Customer()
+            {
+                
                 Console.WriteLine("What are you here for?");
                 Console.WriteLine("\t[1]-Book an appointment" + "\n\t[2]-View appointment schedules" +
                     "\n\t[3]-Request a specific Salon Staff" + "\n\tPress any key to exit");
