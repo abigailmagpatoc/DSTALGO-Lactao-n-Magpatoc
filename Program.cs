@@ -8,11 +8,12 @@ namespace DSTALGO_Lactao_n_Magpatoc
 {
     class Program 
     {
+        CircularQueue<string> finalQue = new CircularQueue<string>();
 
+        static Dictionary<string, string> headsUpCustomer = new Dictionary<string, string>();
 
         static void Main(string[] args)
         {
-            var headsUpCustomer = new Dictionary<string, string>();
             headsUpCustomer.Add("1000AM", " ");
             headsUpCustomer.Add("1100AM", " ");
             headsUpCustomer.Add("0100PM", " ");
@@ -22,17 +23,9 @@ namespace DSTALGO_Lactao_n_Magpatoc
             headsUpCustomer.Add("0500PM", " ");
             headsUpCustomer.Add("0600PM", " ");
 
-            Console.WriteLine("----------------------------------");
-            Console.WriteLine("            HEADS UP!");
-            Console.WriteLine("    A salon appointment program  ");
-            Console.WriteLine("----------------------------------");
-            Console.WriteLine("\n\t[1]-Customer" + "\n\t[2]-Salon Staff");
-
-
-            Console.Write("\nLogin as : ");
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            int user = Convert.ToInt32(Console.ReadLine());
-            Console.ForegroundColor = ConsoleColor.Gray;
+            int user = 0;
+            user = GoHome(user);
+            bool staffLog = false;
 
             if (user == 1)
             {
@@ -42,8 +35,10 @@ namespace DSTALGO_Lactao_n_Magpatoc
 
                     while (true)
                     {
-                        Console.WriteLine("\t[1]-Book an appointment" + "\n\t[2]-View appointment schedules" +
-                        "\n\t[3]-Request a specific Salon Staff");
+                        //Console.WriteLine("\t[1]-Book an appointment" + "\n\t[2]-View appointment schedules" +
+                        //"\n\t[3]-Request a specific Salon Staff");
+                        Console.WriteLine("\t[1]-Request an appointment" + "\n\t[2]-View appointment schedules" + "\n\t[3]-Logout");
+
                         Console.Write("\nEnter operation: ");
                         Console.ForegroundColor = ConsoleColor.Yellow;
                         int choice = Convert.ToInt32(Console.ReadLine());
@@ -52,7 +47,7 @@ namespace DSTALGO_Lactao_n_Magpatoc
                         if (choice == 1)
                         {
                             Console.WriteLine("Which service would like to book?");
-                            Console.WriteLine("\t[1]-Hair Traitment" + "\n\t[2]-Nail Treatment");
+                            Console.WriteLine("\t[1]-Hair Treatment" + "\n\t[2]-Nail Treatment");
                             Console.Write("\nEnter your choice: ");
                             Console.ForegroundColor = ConsoleColor.Yellow;
                             int service = Convert.ToInt32(Console.ReadLine());
@@ -73,7 +68,7 @@ namespace DSTALGO_Lactao_n_Magpatoc
 
                                     Console.ForegroundColor = ConsoleColor.Green;
                                     Console.Write("\nUpdating record...");
-                                    Console.WriteLine("\nAppointment has been made! See you at the salon!");
+                                    Console.WriteLine("\nAppointment has been made! We will contact you once this has been finalized! :)");
                                     Console.ForegroundColor = ConsoleColor.Gray;
                                 }
                                 else
@@ -98,7 +93,7 @@ namespace DSTALGO_Lactao_n_Magpatoc
 
                                     Console.ForegroundColor = ConsoleColor.Green;
                                     Console.Write("\nUpdating record...");
-                                    Console.WriteLine("\nAppointment has been made! See you at the salon!");
+                                    Console.WriteLine("\nAppointment has been made! We will contact you once this has been finalized! :)");
                                     Console.ForegroundColor = ConsoleColor.Gray;
                                 }
                                 else
@@ -123,7 +118,22 @@ namespace DSTALGO_Lactao_n_Magpatoc
                         }
                         if (choice == 3)
                         {
-                            Console.ReadKey();
+                            user = 0;
+                            Console.WriteLine("Are you sure?");
+                            Console.WriteLine("\t[0]-No" + "\n\t[1]-Yes");
+                            Console.Write("\nEnter your choice: ");
+                            Console.ForegroundColor = ConsoleColor.Yellow;
+                            int logout = Convert.ToInt32(Console.ReadLine());
+                            Console.ForegroundColor = ConsoleColor.Gray;
+
+                            if(logout == 0)
+                            {
+                                continue;   
+                            }
+                            else if (logout == 1)
+                            {
+                                GoHome(user);
+                            }
                         }
                         //if (choice == 4)
                         //{
@@ -141,54 +151,109 @@ namespace DSTALGO_Lactao_n_Magpatoc
                 Console.Write("Password : ");
                 string pwd = Convert.ToString(Console.ReadLine());
                 if (uname.Equals("Admin") && pwd.Equals("Admin"))
+                    staffLog = true;
+
+                if (staffLog)
                 {
-                    Console.WriteLine("\t[1]-View appointments" + "\n\t[2]-Search appointment");
-                    Console.Write("What are you here for? ");
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    int choice = Convert.ToInt32(Console.ReadLine());
-                    Console.ForegroundColor = ConsoleColor.Gray;
-
-                    if (choice == 1)
+                    while (true)
                     {
-                        Console.WriteLine("\nTime       Customer Name");
-                        foreach (KeyValuePair<string, string> items in headsUpCustomer)
+                        Console.WriteLine("\t[1]-View requested appointments" + "\n\t[2]-Search appointment" + "\n\t[3]-Add confirmed appointment" + "\n\t[4]-Cancel/finish appointment" + "\n\t[5]-Logout");
+                        Console.Write("What are you here for? ");
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        int choice = Convert.ToInt32(Console.ReadLine());
+                        Console.ForegroundColor = ConsoleColor.Gray;
+
+                        if (choice == 1)
                         {
+                            Console.WriteLine("\nTime       Customer Name");
+                            foreach (KeyValuePair<string, string> items in headsUpCustomer)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Yellow;
+                                Console.WriteLine(items.Key + " : " + items.Value);
+                                Console.ForegroundColor = ConsoleColor.Gray;
+                            }
+                        }
+                        else if (choice == 2)
+                        {
+                            Console.Write("Search customer name : ");
                             Console.ForegroundColor = ConsoleColor.Yellow;
-                            Console.WriteLine(items.Key + " : " + items.Value);
+                            string custName = Convert.ToString(Console.ReadLine());
+                            Console.ForegroundColor = ConsoleColor.Gray;
+                            string time;
+                            if (headsUpCustomer.TryGetValue(custName, out time))
+                            {
+                                Console.ForegroundColor = ConsoleColor.Green;
+                                Console.Write("One appointment found : " + time);
+                                Console.ForegroundColor = ConsoleColor.Gray;
+
+                            }
+                            else
+                                Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine("\nNo Appointment found");
                             Console.ForegroundColor = ConsoleColor.Gray;
                         }
-                    }
-                    if (choice == 2)
-                    {
-                        Console.Write("Search customer name : ");
-                        Console.ForegroundColor = ConsoleColor.Yellow;
-                        string custName = Convert.ToString(Console.ReadLine());
-                        Console.ForegroundColor = ConsoleColor.Gray;
-                        string time;
-                        if (headsUpCustomer.TryGetValue(custName, out time))
+                        else if (choice == 3)
                         {
-                            Console.ForegroundColor = ConsoleColor.Green;
-                            Console.Write("One appointment found : " + time);
-                            Console.ForegroundColor = ConsoleColor.Gray;
 
                         }
-                        else
-                            Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("\nNo Appointment found");
-                        Console.ForegroundColor = ConsoleColor.Gray;
-                    }
+                        else if (choice == 4)
+                        {
 
+                        }
+                        else if (choice == 5)
+                        {
+                            user = 0;
+                            Console.WriteLine("Are you sure?");
+                            Console.WriteLine("\t[0]-No" + "\n\t[1]-Yes");
+                            Console.Write("\nEnter your choice: ");
+                            Console.ForegroundColor = ConsoleColor.Yellow;
+                            int logout = Convert.ToInt32(Console.ReadLine());
+                            Console.ForegroundColor = ConsoleColor.Gray;
+                            Console.ReadKey();
+
+                            if (logout == 0)
+                            {
+                                continue;
+                            }
+                            else if (logout == 1)
+                            {
+                                staffLog = false;
+                                GoHome(user);
+                            }
+                        }
+
+                    }
                 }
                 else
+                {
                     Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("\nInvalid Username/Password");
-                Console.ForegroundColor = ConsoleColor.Gray;
+                    Console.WriteLine("\nInvalid Username/Password");
+                    Console.ForegroundColor = ConsoleColor.Gray;
+
+                }
 
             }
             Console.ReadKey();
         }
 
 
+
+        public static int GoHome(int inp)
+        {
+
+            Console.WriteLine("----------------------------------");
+            Console.WriteLine("            HEADS UP!");
+            Console.WriteLine("    A salon appointment program  ");
+            Console.WriteLine("----------------------------------");
+            Console.WriteLine("\n\t[1]-Customer" + "\n\t[2]-Salon Staff");
+
+
+            Console.Write("\nLogin as : ");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            inp = Convert.ToInt32(Console.ReadLine());
+            Console.ForegroundColor = ConsoleColor.Gray;
+            return inp;
+        }
 
     }
    
