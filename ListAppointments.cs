@@ -15,14 +15,14 @@ namespace DSTALGO_Lactao_n_Magpatoc
         public ListAppointments()
         {
             array = new string[8][];
-            array[0] = new string[3];
-            array[1] = new string[3];
-            array[2] = new string[3];
-            array[3] = new string[3];
-            array[4] = new string[3];
-            array[5] = new string[3];
-            array[6] = new string[3];
-            array[7] = new string[3];
+            array[0] = new string[4];
+            array[1] = new string[4];
+            array[2] = new string[4];
+            array[3] = new string[4];
+            array[4] = new string[4];
+            array[5] = new string[4];
+            array[6] = new string[4];
+            array[7] = new string[4];
             index = -1;
         }
         public void Add(string[] item)
@@ -87,7 +87,22 @@ namespace DSTALGO_Lactao_n_Magpatoc
             {
                 tempArr[i] = array[i];
             }
-            return array;
+            return tempArr;
+        }
+
+        public void PrintList(string[][] list)
+        {
+
+            foreach (string[] record in list)
+            {
+                foreach (string item in record)
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.Write("\t\t" + item);
+                    Console.ForegroundColor = ConsoleColor.Gray;
+                }
+
+            }
         }
 
     }

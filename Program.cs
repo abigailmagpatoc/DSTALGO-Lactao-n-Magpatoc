@@ -68,7 +68,7 @@ namespace DSTALGO_Lactao_n_Magpatoc
                                     string time = Convert.ToString(Console.ReadLine());
                                     if (headsUpCustomer.ContainsKey(time))
                                     {
-                                        string[] entryList = new string[3];
+                                        string[] entryList = new string[4];
                                         Console.Write("Name of customer : ");
                                         Console.ForegroundColor = ConsoleColor.Yellow;
                                         string custName = Convert.ToString(Console.ReadLine());
@@ -76,9 +76,10 @@ namespace DSTALGO_Lactao_n_Magpatoc
                                         string identityKey = id.ToString();
                                         entryList[0] = identityKey;
                                         headsUpCustomer[time] = custName;
-                                        entryList[1] = custName;
+                                        entryList[1] = time;
+                                        entryList[2] = custName;
                                         Console.ForegroundColor = ConsoleColor.Gray;
-                                        entryList[2] = "Hair treatment";
+                                        entryList[3] = "Nail treatment";
                                         ListApps.Add(entryList);
                                         Console.ForegroundColor = ConsoleColor.Green;
                                         Console.Write("\nUpdating record...");
@@ -101,7 +102,7 @@ namespace DSTALGO_Lactao_n_Magpatoc
                                     string time = Convert.ToString(Console.ReadLine());
                                     if (headsUpCustomer.ContainsKey(time))
                                     {
-                                        string[] entryList = new string[3];
+                                        string[] entryList = new string[4];
                                         Console.Write("Name of customer : ");
                                         Console.ForegroundColor = ConsoleColor.Yellow;
                                         string custName = Convert.ToString(Console.ReadLine());
@@ -109,9 +110,10 @@ namespace DSTALGO_Lactao_n_Magpatoc
                                         string identityKey = id.ToString();
                                         entryList[0] = identityKey;
                                         headsUpCustomer[time] = custName;
-                                        entryList[1] = custName;
+                                        entryList[1] = time;
+                                        entryList[2] = custName;
                                         Console.ForegroundColor = ConsoleColor.Gray;
-                                        entryList[2] = "Nail treatment";
+                                        entryList[3] = "Nail treatment";
                                         ListApps.Add(entryList);
                                         Console.ForegroundColor = ConsoleColor.Green;
                                         Console.Write("\nUpdating record...");
@@ -200,8 +202,13 @@ namespace DSTALGO_Lactao_n_Magpatoc
                                     //    Console.ForegroundColor = ConsoleColor.Gray;
                                     //}
 
-                                    Console.WriteLine("\nTime       Customer Name");
-                                    ListApps.GetListArray();
+                                    Console.WriteLine("\tID\tTime\tCustomer Name\tTreatment");
+
+                                    ListApps.PrintList(ListApps.GetListArray());
+                                    Console.ReadKey();
+                                    Console.WriteLine();
+                                    
+
                                 }
                                 else if (choice == 2)
                                 {

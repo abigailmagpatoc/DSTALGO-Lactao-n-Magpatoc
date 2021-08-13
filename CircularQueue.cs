@@ -16,14 +16,14 @@ namespace DSTALGO_Lactao_n_Magpatoc
         public CircularQueue()
         {
             array = new string[8][];
-            array[0] = new string[3];
-            array[1] = new string[3];
-            array[2] = new string[3];
-            array[3] = new string[3];
-            array[4] = new string[3];
-            array[5] = new string[3];
-            array[6] = new string[3];
-            array[7] = new string[3];
+            array[0] = new string[4];
+            array[1] = new string[4];
+            array[2] = new string[4];
+            array[3] = new string[4];
+            array[4] = new string[4];
+            array[5] = new string[4];
+            array[6] = new string[4];
+            array[7] = new string[4];
             count = 0; front = 0; rear = -1;
         }
         public int Count
