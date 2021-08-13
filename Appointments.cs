@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections;
 
 namespace DSTALGO_Lactao_n_Magpatoc
 {
@@ -11,6 +12,10 @@ namespace DSTALGO_Lactao_n_Magpatoc
 
         List<string> headsUpCustomer = new List<string>();
 
+        //ArrayList headsUpCustomer = new ArrayList();
+
+        int id = 100;
+
         public void BookAppoint(int treatment)
         {
 
@@ -18,9 +23,13 @@ namespace DSTALGO_Lactao_n_Magpatoc
             {
                 Console.Write("Enter name: ");
                 Console.ForegroundColor = ConsoleColor.Yellow;
+                id++;
                 string custName = Convert.ToString(Console.ReadLine());
                 Console.ForegroundColor = ConsoleColor.Gray;
+                headsUpCustomer.Add(id.ToString());
                 headsUpCustomer.Add(custName);
+                
+
 
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("\nAppointment has been made! See you at the salon!");
