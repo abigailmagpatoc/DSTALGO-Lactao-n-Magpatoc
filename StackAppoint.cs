@@ -6,16 +6,19 @@ using System.Threading.Tasks;
 
 namespace DSTALGO_Lactao_n_Magpatoc
 {
-    class Stack
+    class StackAppoint
     {
         //for undo button? -> allow customer user to undo/pop recent appointment
 
         private object[] array;
+
+        //
         private int top;
 
-        public Stack()
+        public StackAppoint()
         {
-            array = new object[5];
+            array = new object[6];
+            //6 time slots? 
             top = -1;
                 
         }
