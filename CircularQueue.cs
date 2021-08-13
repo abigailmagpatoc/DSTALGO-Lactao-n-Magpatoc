@@ -48,6 +48,46 @@ namespace DSTALGO_Lactao_n_Magpatoc
             }
         }
 
+        public void Sort() // bug* still needs work. itemInto cannot be null but queue has null slots
+        {
+            for (int i = 1; i < array.Length; i++)
+            {
+                string? itemInto = array[i][1];
+                int j;
+                for (j = i; j > 0; j--)
+                {
+                    if (itemInto.CompareTo(array[j][1]) == -1)
+                    {
+                        array[j][1] = array[j - 1][1];
+                    }
+                    else break;
+                }
+                array[j][1] = itemInto;
+            }
+            //int lowerB = 0;
+            //int upperB = index;
+            //int midIndex;
+            //while (lowerB <= upperB)
+            //{
+            //    midIndex = (lowerB + upperB) / 2;
+            //    if (item == int.Parse(array[midIndex][0]))
+            //    {
+            //        return midIndex;
+
+            //    }
+            //    else if (item < int.Parse(array[midIndex][0]))
+            //    {
+            //        upperB = midIndex - 1;
+            //    }
+            //    else if (item > int.Parse(array[midIndex][0]))
+            //    {
+            //        lowerB = midIndex + 1;
+            //    }
+            //}
+            //return -1;
+
+        }
+
         public string Dequeue()
         {
             if (count > 0)
@@ -85,7 +125,9 @@ namespace DSTALGO_Lactao_n_Magpatoc
                 //Console.WriteLine(array[index]);
                 for (int i = index; i < array[index].Length; i++)
                 {
+                    Console.ForegroundColor = ConsoleColor.DarkYellow;
                     Console.Write("\t" + array[index][i]);
+                    Console.ForegroundColor = ConsoleColor.Gray;
                 }
                 index = (index + 1) % array.Length;
                 counter--;

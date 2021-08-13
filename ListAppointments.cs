@@ -69,7 +69,7 @@ namespace DSTALGO_Lactao_n_Magpatoc
                 throw new Exception("Index out of range");
         }
 
-        private void DoubleNoRows()
+        public void DoubleNoRows()
         {
             string[][] newArr = new string[array.Length * 2][];
             for (int i = 0; i < array.Length; i++)
@@ -79,8 +79,7 @@ namespace DSTALGO_Lactao_n_Magpatoc
             array = newArr;
         }
 
-
-        private int BinarySearch(string item)
+        public int BinarySearch(int item)
         {
             int lowerB = 0;
             int upperB = index;
@@ -88,16 +87,16 @@ namespace DSTALGO_Lactao_n_Magpatoc
             while (lowerB <= upperB)
             {
                 midIndex = (lowerB + upperB) / 2;
-                if (item == array[midIndex][2])
+                if (item == int.Parse(array[midIndex][0]))
                 {
                     return midIndex;
 
                 }
-                else if (item.CompareTo(array[midIndex][2]) == -1)
+                else if (item < int.Parse(array[midIndex][0]))
                 {
                     upperB = midIndex - 1;
                 }
-                else if (item.CompareTo(array[midIndex][2]) == 1)
+                else if (item > int.Parse(array[midIndex][0]))
                 {
                     lowerB = midIndex + 1;
                 }
@@ -116,22 +115,27 @@ namespace DSTALGO_Lactao_n_Magpatoc
             }
             return tempArr;
         }
-
-        public void PrintList(string[][] list)
+        public string[] GetListArray(int dim)
         {
-
-            foreach (string[] record in list)
-            {
-                Console.Write("\n");
-                foreach (string item in record)
-                {
-                    Console.ForegroundColor = ConsoleColor.DarkYellow;
-                    Console.Write("\t" + item);
-                    Console.ForegroundColor = ConsoleColor.Gray;
-                }
-
-            }
+            string[] tempArr = array[dim];
+            return tempArr;
         }
+
+        //public void PrintList(string[][] list)
+        //{
+
+        //    foreach (string[] record in list)
+        //    {
+        //        Console.Write("\n");
+        //        foreach (string item in record)
+        //        {
+        //            Console.ForegroundColor = ConsoleColor.DarkYellow;
+        //            Console.Write("\t" + item);
+        //            Console.ForegroundColor = ConsoleColor.Gray;
+        //        }
+
+        //    }
+        //}
 
     }
 }
