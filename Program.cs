@@ -8,12 +8,17 @@ namespace DSTALGO_Lactao_n_Magpatoc
 {
     class Program 
     {
-        CircularQueue<string> finalQue = new CircularQueue<string>();
-
-        static Dictionary<string, string> headsUpCustomer = new Dictionary<string, string>();
+       
 
         static void Main(string[] args)
         {
+            CircularQueue finalQue = new CircularQueue();
+            ListAppointments ListApps = new ListAppointments();
+            Dictionary<string, string> headsUpCustomer = new Dictionary<string, string>();
+            
+
+            int id = 100;
+
             headsUpCustomer.Add("1000AM", " ");
             headsUpCustomer.Add("1100AM", " ");
             headsUpCustomer.Add("0100PM", " ");
@@ -27,7 +32,7 @@ namespace DSTALGO_Lactao_n_Magpatoc
             user = GoHome(user);
             bool login = false;
 
-            while(true)
+            while (true)
             {
                 if (user == 1)
                 {
@@ -63,16 +68,24 @@ namespace DSTALGO_Lactao_n_Magpatoc
                                     string time = Convert.ToString(Console.ReadLine());
                                     if (headsUpCustomer.ContainsKey(time))
                                     {
+                                        string[] entryList = new string[3];
                                         Console.Write("Name of customer : ");
                                         Console.ForegroundColor = ConsoleColor.Yellow;
                                         string custName = Convert.ToString(Console.ReadLine());
+                                        id++;
+                                        string identityKey = id.ToString();
+                                        entryList[0] = identityKey;
                                         headsUpCustomer[time] = custName;
+                                        entryList[1] = custName;
                                         Console.ForegroundColor = ConsoleColor.Gray;
-
+                                        entryList[2] = "Hair treatment";
+                                        ListApps.Add(entryList);
                                         Console.ForegroundColor = ConsoleColor.Green;
                                         Console.Write("\nUpdating record...");
                                         Console.WriteLine("\nAppointment has been made! We will contact you once this has been finalized! :)");
                                         Console.ForegroundColor = ConsoleColor.Gray;
+
+                                        
                                     }
                                     else
                                     {
@@ -88,12 +101,18 @@ namespace DSTALGO_Lactao_n_Magpatoc
                                     string time = Convert.ToString(Console.ReadLine());
                                     if (headsUpCustomer.ContainsKey(time))
                                     {
+                                        string[] entryList = new string[3];
                                         Console.Write("Name of customer : ");
                                         Console.ForegroundColor = ConsoleColor.Yellow;
                                         string custName = Convert.ToString(Console.ReadLine());
+                                        id++;
+                                        string identityKey = id.ToString();
+                                        entryList[0] = identityKey;
                                         headsUpCustomer[time] = custName;
+                                        entryList[1] = custName;
                                         Console.ForegroundColor = ConsoleColor.Gray;
-
+                                        entryList[2] = "Nail treatment";
+                                        ListApps.Add(entryList);
                                         Console.ForegroundColor = ConsoleColor.Green;
                                         Console.Write("\nUpdating record...");
                                         Console.WriteLine("\nAppointment has been made! We will contact you once this has been finalized! :)");
@@ -164,7 +183,8 @@ namespace DSTALGO_Lactao_n_Magpatoc
                         {
                             while (true)
                             {
-                                Console.WriteLine("\t[1]-View requested appointments" + "\n\t[2]-Search appointment" + "\n\t[3]-Add confirmed appointment" + "\n\t[4]-Cancel/finish appointment" + "\n\t[5]-Logout");
+                                Console.WriteLine("\t[1]-View requested appointments" + "\n\t[2]-Search appointment" + "\n\t[3]-Add confirmed appointment" + 
+                                    "\n\t[4]-Cancel/finish appointment" + "\n\t[5]-View confirmed appointments" + "\n\t[6]-Logout");
                                 Console.Write("What are you here for? ");
                                 Console.ForegroundColor = ConsoleColor.Green;
                                 int choice = Convert.ToInt32(Console.ReadLine());
@@ -172,13 +192,16 @@ namespace DSTALGO_Lactao_n_Magpatoc
 
                                 if (choice == 1)
                                 {
+                                    //Console.WriteLine("\nTime       Customer Name");
+                                    //foreach (KeyValuePair<string, string> items in headsUpCustomer)
+                                    //{
+                                    //    Console.ForegroundColor = ConsoleColor.Yellow;
+                                    //    Console.WriteLine(items.Key + " : " + items.Value);
+                                    //    Console.ForegroundColor = ConsoleColor.Gray;
+                                    //}
+
                                     Console.WriteLine("\nTime       Customer Name");
-                                    foreach (KeyValuePair<string, string> items in headsUpCustomer)
-                                    {
-                                        Console.ForegroundColor = ConsoleColor.Yellow;
-                                        Console.WriteLine(items.Key + " : " + items.Value);
-                                        Console.ForegroundColor = ConsoleColor.Gray;
-                                    }
+                                    ListApps.GetListArray();
                                 }
                                 else if (choice == 2)
                                 {
@@ -201,28 +224,35 @@ namespace DSTALGO_Lactao_n_Magpatoc
                                 }
                                 else if (choice == 3)
                                 {
-                                    Console.Write("Enter appointment key : ");
+                                    Console.Write("Enter appointment key (time) : "); 
                                     Console.ForegroundColor = ConsoleColor.Yellow;
                                     string time = Convert.ToString(Console.ReadLine());
                                     Console.ForegroundColor = ConsoleColor.Gray;
-                                    string custName;
-                                    if (headsUpCustomer.TryGetValue(time, out custName))
-                                    {
-                                        Console.ForegroundColor = ConsoleColor.Green;
-                                        Console.Write("One appointment found : " + time);
-                                        Console.ForegroundColor = ConsoleColor.Gray;
+                                    //string custName = headsUpCustomer[time];
+                                    //finalQue.Enqueue(custName);
 
-                                    }
-                                    else
-                                        Console.ForegroundColor = ConsoleColor.Red;
-                                    Console.WriteLine("\nNo Appointment found");
-                                    Console.ForegroundColor = ConsoleColor.Gray;
+                                    //string custName;
+                                    //if (headsUpCustomer.TryGetValue(time, out custName))
+                                    //{
+                                    //    finalQue.Enqueue(headsUpCustomer[time]);
+                                    //    //Console.ForegroundColor = ConsoleColor.Green;
+                                    //    //Console.Write("One appointment found : " + time);
+                                    //    //Console.ForegroundColor = ConsoleColor.Gray;
+                                    //}
+                                    //else
+                                    //    Console.ForegroundColor = ConsoleColor.Red;
+                                    //Console.WriteLine("\nNo Appointment found");
+                                    //Console.ForegroundColor = ConsoleColor.Gray;
                                 }
                                 else if (choice == 4)
                                 {
 
                                 }
                                 else if (choice == 5)
+                                {
+                                    finalQue.ViewQAppoints();
+                                }
+                                else if (choice == 6)
                                 {
                                     user = 0;
                                     Console.ForegroundColor = ConsoleColor.Red;
@@ -263,7 +293,7 @@ namespace DSTALGO_Lactao_n_Magpatoc
                 else if (user == 3)
                     break;
             }
-            
+
             Console.ReadKey();
         }
 

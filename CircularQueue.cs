@@ -7,27 +7,39 @@ using DSTALGO_Lactao_n_Magpatoc;
 
 namespace DSTALGO_Lactao_n_Magpatoc
 {
-    class CircularQueue<T>
+    class CircularQueue
     {
-        private T[] array;
+        private string[][] array;
 
         private int count, front, rear;
 
         public CircularQueue()
         {
-            array = new T[8];
+            array = new string[8][];
+            array[0] = new string[3];
+            array[1] = new string[3];
+            array[2] = new string[3];
+            array[3] = new string[3];
+            array[4] = new string[3];
+            array[5] = new string[3];
+            array[6] = new string[3];
+            array[7] = new string[3];
             count = 0; front = 0; rear = -1;
         }
         public int Count
         {
             get { return count; }
         }
-        public void Enqueue(T item)
+        public void Enqueue(string[] arr)
         {
-            if (count < array.Length)
+            if (count < array.Length) //bug* object reference?
             {
                 rear++;
-                array[rear] = item;
+                array[rear] = arr;
+                //for (int i = 0; i < array[rear].Length; i++)
+                //{
+                //    array[rear][i] = arr;
+                //}
                 count++;
             }
             else
@@ -36,11 +48,11 @@ namespace DSTALGO_Lactao_n_Magpatoc
             }
         }
 
-        public T Dequeue()
+        public string Dequeue()
         {
             if (count > 0)
             {
-                T item = array[front];
+                string item = array[front][0];
                 front++;
                 count--;
                 return item;
@@ -51,11 +63,11 @@ namespace DSTALGO_Lactao_n_Magpatoc
             }
         }
 
-        public T Peek()
+        public string Peek()
         {
             if (count > 0)
             {
-                T item = array[front];
+                string item = array[front][0];
                 return item;
             }
             else
@@ -64,17 +76,26 @@ namespace DSTALGO_Lactao_n_Magpatoc
             }
         }
 
-        public void viewQAppoints()
+        public void ViewQAppoints()
         {
             int counter = count;
             int index = front;
             while(counter > 0)
             {
-                Console.WriteLine(array[index]);
-                index++;
+                //Console.WriteLine(array[index]);
+                for (int i = index; i < array[index].Length; i++)
+                {
+                    Console.Write("\t" + array[index][i]);
+                }
+                index = (index + 1) % array.Length;
                 counter--;
             }
 
+        }
+
+        public string[][] GetArray()
+        {
+            return array;
         }
 
     }
