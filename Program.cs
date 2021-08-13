@@ -1,16 +1,20 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using DSTALGO_Lactao_n_Magpatoc;
 
 
 namespace DSTALGO_Lactao_n_Magpatoc
 {
-    class Program
+    class Program 
     {
+        
+
         static void Main(string[] args)
         {
             HeadsUp headsUp = new HeadsUp();
-            
+            Appointments appm = new Appointments();
+
             Console.WriteLine("-------------------------------");
             Console.WriteLine("   Welcome to Heads Up Salon");
             Console.WriteLine("-------------------------------");
@@ -22,11 +26,86 @@ namespace DSTALGO_Lactao_n_Magpatoc
 
             if (user == 1)
             {
-                headsUp.Customer();
-                
+                //Customer();
+
+                Console.WriteLine("What are you here for?");
+                Console.WriteLine("\t[1]-Book an appointment" + "\n\t[2]-View appointment schedules" +
+                    "\n\t[3]-Request a specific Salon Staff" + "\n\tPress any key to exit");
+                Console.Write("\nEnter your choice: ");
+                Console.ForegroundColor = ConsoleColor.Green;
+                int choice = Convert.ToInt32(Console.ReadLine());
+                Console.ForegroundColor = ConsoleColor.Gray;
+
+                if (choice == 1)
+                {
+                    Console.WriteLine("Which service would like to book?");
+                    Console.WriteLine("\t[1]-Hair Traitment" + "\n\t[2]-Nail Treatment");
+                    Console.Write("\nEnter your choice: ");
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    int service = Convert.ToInt32(Console.ReadLine());
+                    Console.ForegroundColor = ConsoleColor.Gray;
+                    appm.BookAppoint(service);
+
+                }
+                if (choice == 2)
+                {
+                   
+                }
+                if (choice == 3)
+                {
+
+                }
+                if (choice == 4)
+                {
+
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("\nThank you for using this application");
+                    Console.ForegroundColor = ConsoleColor.Gray;
+                    Console.ReadKey();
+                }
+
+            }
+            else if (user == 2)
+            {
+                Console.WriteLine("What are you here for?");
+                Console.WriteLine("\t[1]-View appointments" + "\n\t[2]-Search appointment");
+                Console.ForegroundColor = ConsoleColor.Green;
+                int choice = Convert.ToInt32(Console.ReadLine());
+                Console.ForegroundColor = ConsoleColor.Gray;
+
+                if (choice == 1)
+                {
+                    //foreach (string items in headsUpCustomer)
+                    //{
+                    //    Console.ForegroundColor = ConsoleColor.Yellow;
+                    //    Console.Write("\t" + items + "\n\t");
+                    //    Console.ForegroundColor = ConsoleColor.Gray;
+                    //}
+                    appm.ViewAppoint();
+
+                }
+                if (choice == 2)
+                {
+
+                }
             }
             Console.ReadKey();
         }
+
+        public static void Customer()
+        {
+
+            
+        }
+        public void Staff()
+        {
+            
+        }
+
+
         public class HeadsUp
         {
             List<string> headsUpCustomer = new List<string>();
@@ -70,71 +149,11 @@ namespace DSTALGO_Lactao_n_Magpatoc
                 }
             }
 
-            public void Customer()
-            {
-                
-                Console.WriteLine("What are you here for?");
-                Console.WriteLine("\t[1]-Book an appointment" + "\n\t[2]-View appointment schedules" +
-                    "\n\t[3]-Request a specific Salon Staff" + "\n\tPress any key to exit");
-                Console.Write("\nEnter your choice: ");
-                Console.ForegroundColor = ConsoleColor.Green;
-                int choice = Convert.ToInt32(Console.ReadLine());
-                Console.ForegroundColor = ConsoleColor.Gray;
-
-                if (choice == 1)
-                {
-                    Console.WriteLine("Which service would like to book?");
-                    Console.WriteLine("\t[1]-Hair Traitment" + "\n\t[2]-Nail Treatment");
-                    Console.Write("\nEnter your choice: ");
-                    Console.ForegroundColor = ConsoleColor.Yellow;
-                    int service = Convert.ToInt32(Console.ReadLine());
-                    Console.ForegroundColor = ConsoleColor.Gray;
-                    BookAppoint(service);
-                    
-                }
-                if (choice == 2)
-                {
-                    ViewAppoint();
-                }
-                if (choice == 3)
-                {
-
-                }
-                if (choice == 4)
-                {
-
-                }
-                else
-                {
-                    Console.ForegroundColor = ConsoleColor.Yellow;
-                    Console.WriteLine("\nThank you for using this application");
-                    Console.ForegroundColor = ConsoleColor.Gray;
-                    Console.ReadKey();
-                }
-            }
-            public void Staff()
-            {
-                Console.WriteLine("What are you here for?");
-                Console.WriteLine("\t[1]-View appointments" + "\n\t[2]-Search appointment");
-                Console.ForegroundColor = ConsoleColor.Green;
-                int choice = Convert.ToInt32(Console.ReadLine());
-                Console.ForegroundColor = ConsoleColor.Gray;
-
-                if (choice == 1)
-                {
-                    foreach (string items in headsUpCustomer)
-                    {
-                        Console.ForegroundColor = ConsoleColor.Yellow;
-                        Console.Write("\t" + items + "\n\t");
-                        Console.ForegroundColor = ConsoleColor.Gray;
-                    }
-                }
-                if (choice == 2)
-                {
-
-                }
-            }
+           
         }
+
+
+       
 
     }
    
