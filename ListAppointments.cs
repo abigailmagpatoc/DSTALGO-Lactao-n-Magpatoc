@@ -107,20 +107,23 @@ namespace DSTALGO_Lactao_n_Magpatoc
 
         public string[][] SearchList(string name)
         {
-            string[][] searchArr = GetListArray();
+            string[][] tempArr = new string[index + 1][];
             string[][] narrowArr;
             int match = 0;
-            for (int i = 0; i < searchArr.Length; i++)
+            for (int i = 0; i < array.Length; i++)
             {
-                if(name == array[i][2])
+                if (name == array[i][2])
                 {
+                    tempArr[match] = array[i];
                     match++;
-                    searchArr[i] = array[i];
                 }
-                
+               
             }
             narrowArr = new string[match][];
-            narrowArr = searchArr;
+            for (int i = 0; i < narrowArr.Length; i++)
+            {
+                narrowArr[i] = tempArr[i];
+            }
             return narrowArr;
 
         }

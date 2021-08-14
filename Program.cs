@@ -188,8 +188,8 @@ namespace DSTALGO_Lactao_n_Magpatoc
                         {
                             while (true)
                             {
-                                Console.WriteLine("\t[1]-View requested appointments" + "\n\t[2]-Search requested appointments" + "\n\t[3]-Add confirmed appointment" + 
-                                    "\n\t[4]-Cancel/finish appointment" + "\n\t[5]-View confirmed appointments" + "\n\t[6]-Logout");
+                                Console.WriteLine("\t[1]-View requested appointments" + "\n\t[2]-Search all appointments" + "\n\t[3]-Add confirmed appointment" + 
+                                    "\n\t[4]-Finish/cancel appointment" + "\n\t[5]-View confirmed appointments" + "\n\t[6]-Logout");
                                 Console.Write("What are you here for? ");
                                 Console.ForegroundColor = ConsoleColor.Green;
                                 int choice = Convert.ToInt32(Console.ReadLine());
