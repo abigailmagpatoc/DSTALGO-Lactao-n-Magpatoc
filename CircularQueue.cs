@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DSTALGO_Lactao_n_Magpatoc;
+using System.Globalization;
 
 
 namespace DSTALGO_Lactao_n_Magpatoc
@@ -33,9 +34,9 @@ namespace DSTALGO_Lactao_n_Magpatoc
         }
         public void Enqueue(string[] arr)
         {
-            if (count < array.Length) //bug* object reference?
+            if (count < array.Length)
             {
-                rear++;
+                rear = (rear + 1) % array.Length;
                 array[rear] = arr;
                 //for (int i = 0; i < array[rear].Length; i++)
                 //{
@@ -51,20 +52,37 @@ namespace DSTALGO_Lactao_n_Magpatoc
 
         public void Sort() // bug* still needs work. itemInto cannot be null but queue has null slots
         {
-            for (int i = 1; i < array.Length; i++)
+            
+            string[][] tempArray = GetArray(); 
+
+            for (int i = 1; i < tempArray.Length; i++)
             {
-                string? itemInto = array[i][1];
+                DateTime hoursInto = new DateTime();
+                DateTime hoursTemp = new DateTime();
+                string format = "hhmmtt";
+                string[] arrInto = tempArray[i];
+                hoursInto = DateTime.ParseExact(tempArray[i][1], format, CultureInfo.InvariantCulture);
                 int j;
                 for (j = i; j > 0; j--)
                 {
-                    if (itemInto.CompareTo(array[j][1]) == -1)
+                    hoursTemp = DateTime.ParseExact(tempArray[j - 1][1], format, CultureInfo.InvariantCulture);
+
+                    if (hoursInto.CompareTo(hoursTemp) == -1)
                     {
-                        array[j][1] = array[j - 1][1];
+                        tempArray[j] = tempArray[j - 1];
                     }
-                    else break;
+                    else 
+                        break;
                 }
-                array[j][1] = itemInto;
+                tempArray[j] = arrInto;
             }
+
+            for (int i = 0; i < tempArray.Length; i++)
+            {
+                array[i] = tempArray[i];
+            }
+
+
             //int lowerB = 0;
             //int upperB = index;
             //int midIndex;
@@ -94,7 +112,7 @@ namespace DSTALGO_Lactao_n_Magpatoc
             if (count > 0)
             {
                 string item = array[front][0];
-                front++;
+                front = (front + 1) % array.Length;
                 count--;
                 return item;
             }
@@ -104,11 +122,11 @@ namespace DSTALGO_Lactao_n_Magpatoc
             }
         }
 
-        public string Peek()
+        public string[] Peek()
         {
             if (count > 0)
             {
-                string item = array[front][0];
+                string[] item = array[front];
                 return item;
             }
             else
@@ -124,13 +142,14 @@ namespace DSTALGO_Lactao_n_Magpatoc
             while(counter > 0)
             {
                 //Console.WriteLine(array[index]);
-                for (int i = index; i < array[index].Length; i++)
+                Console.Write("\n");
+                for (int i = 0; i < array[index].Length; i++)
                 {
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
                     Console.Write("\t" + array[index][i]);
                     Console.ForegroundColor = ConsoleColor.Gray;
                 }
-                index = (index + 1) % array.Length;
+                index = (index + 1) % array[index].Length;
                 counter--;
             }
 
@@ -138,9 +157,20 @@ namespace DSTALGO_Lactao_n_Magpatoc
 
         public string[][] GetArray()
         {
-            return array;
+            int counter = count;
+            string[][] tempArr = new string[counter][];
+            for (int i = 0; i < tempArr.Length; i++)
+            {
+                tempArr[i] = array[i];
+            }
+            return tempArr;
         }
 
+        public string[] GetListArray(int dim)
+        {
+            string[] tempArr = array[dim];
+            return tempArr;
+        }
 
     }
 }

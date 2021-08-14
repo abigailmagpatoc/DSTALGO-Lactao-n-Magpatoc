@@ -187,8 +187,8 @@ namespace DSTALGO_Lactao_n_Magpatoc
                         {
                             while (true)
                             {
-                                Console.WriteLine("\t[1]-View requested appointments" + "\n\t[2]-Search appointment" + "\n\t[3]-Add confirmed appointment" + 
-                                    "\n\t[4]-Cancel/finish appointment" + "\n\t[5]-View confirmed appointments" + "\n\t[6]-Logout");
+                                Console.WriteLine("\t[1]-View requested appointments" + "\n\t[2]-Search all appointments" + "\n\t[3]-Add confirmed appointment" + 
+                                    "\n\t[4]-Finish/cancel appointment" + "\n\t[5]-View confirmed appointments" + "\n\t[6]-Logout");
                                 Console.Write("What are you here for? ");
                                 Console.ForegroundColor = ConsoleColor.Green;
                                 int choice = Convert.ToInt32(Console.ReadLine());
@@ -197,7 +197,6 @@ namespace DSTALGO_Lactao_n_Magpatoc
                                 //view requested appointmetns
                                 if (choice == 1)
                                 {
-                                    
                                     Console.Write("\tID\tTime\tCustomer   Treatment\n");
 
                                     foreach (string[] record in ListApps.GetListArray())
@@ -219,25 +218,43 @@ namespace DSTALGO_Lactao_n_Magpatoc
                                 //search appointment
                                 else if (choice == 2)
                                 {
-
                                     Console.Write("Search customer name : ");
                                     Console.ForegroundColor = ConsoleColor.Yellow;
-                                    string custName = Convert.ToString(Console.ReadLine());
+                                    string custName = Console.ReadLine();
                                     Console.ForegroundColor = ConsoleColor.Gray;
-                                    string time;
-                                    if (headsUpCustomer.TryGetValue(custName, out time))
+                                    Console.WriteLine("Appointment(s) found : ");
+                                    Console.Write("\tID\tTime\tCustomer   Treatment\n");
+                                    foreach (string[] entry in ListApps.SearchList(custName))
                                     {
-                                        Console.ForegroundColor = ConsoleColor.Green;
-                                        Console.Write("One appointment found : " + time);
-                                        Console.ForegroundColor = ConsoleColor.Gray;
+                                        Console.WriteLine();
+                                        foreach (string item in entry)
+                                        {
+                                            Console.ForegroundColor = ConsoleColor.Green;
+                                            Console.Write("\t" + item);
+                                            Console.ForegroundColor = ConsoleColor.Gray;
+                                        }
                                     }
-                                    else
-                                    {
-                                        Console.ForegroundColor = ConsoleColor.Red;
-                                        Console.WriteLine("\nNo Appointment found");
-                                        Console.ForegroundColor = ConsoleColor.Gray;
+                                    Console.ReadKey();
+                                    Console.WriteLine();
 
-                                    }
+                                    //Console.Write("Search customer name : ");
+                                    //Console.ForegroundColor = ConsoleColor.Yellow;
+                                    //string custName = Convert.ToString(Console.ReadLine());
+                                    //Console.ForegroundColor = ConsoleColor.Gray;
+                                    //string time;
+                                    //if (headsUpCustomer.TryGetValue(custName, out time))
+                                    //{
+                                    //    Console.ForegroundColor = ConsoleColor.Green;
+                                    //    Console.Write("One appointment found : " + time);
+                                    //    Console.ForegroundColor = ConsoleColor.Gray;
+                                    //}
+                                    //else
+                                    //{
+                                    //    Console.ForegroundColor = ConsoleColor.Red;
+                                    //    Console.WriteLine("\nNo Appointment found");
+                                    //    Console.ForegroundColor = ConsoleColor.Gray;
+
+                                    //}
 
                                     Console.ReadKey();
                                     Console.WriteLine();
@@ -264,15 +281,47 @@ namespace DSTALGO_Lactao_n_Magpatoc
                                 //cancel/finish appointment
                                 else if (choice == 4)
                                 {
+                                    Console.WriteLine("Are you sure?");
+                                    Console.WriteLine("\t[0]-No" + "\n\t[1]-Yes");
+                                    Console.ForegroundColor = ConsoleColor.Gray;
+                                    Console.Write("\nEnter your choice: ");
+                                    Console.ForegroundColor = ConsoleColor.Yellow;
+                                    int cancel = Convert.ToInt32(Console.ReadLine());
+                                    Console.ForegroundColor = ConsoleColor.Gray;
+                                    Console.ReadKey();
 
+                                    if (cancel == 1)
+                                    {
+                                        finalQue.Dequeue();
+                                        Console.ForegroundColor = ConsoleColor.Green;
+                                        Console.WriteLine("\tRemoving queue...");
+                                        Console.WriteLine("\tAppointment has been removed! Next appointment is : ");
+                                        Console.ForegroundColor = ConsoleColor.Yellow;
+                                        Console.Write("\tID\tTime\tCustomer   Treatment\n");
+                                        foreach (string item in finalQue.Peek())
+                                        {
+                                            Console.ForegroundColor = ConsoleColor.DarkYellow;
+                                            Console.Write("\t" + item);
+                                            Console.ForegroundColor = ConsoleColor.Gray;
+                                        }
+                                        Console.WriteLine();
+                                        Console.ReadKey();
+                                    }
+                                    else if (cancel == 0)
+                                    {
+                                        Console.WriteLine();
+                                        Console.ReadKey();
+                                        continue;
+                                    }
+                                        
                                 }
                                 //view confirmed appointments
                                 else if (choice == 5)
                                 {
                                     Console.WriteLine("\tConfirmed Appointments");
                                     Console.Write("\tID\tTime\tCustomer   Treatment\n");
-                                    finalQue.ViewQAppoints();
                                     finalQue.Sort();
+                                    finalQue.ViewQAppoints();
                                     Console.ReadKey();
                                     Console.WriteLine();
                                 }
