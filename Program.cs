@@ -43,8 +43,7 @@ namespace DSTALGO_Lactao_n_Magpatoc
 
                         while (true)
                         {
-                            //Console.WriteLine("\t[1]-Book an appointment" + "\n\t[2]-View appointment schedules" +
-                            //"\n\t[3]-Request a specific Salon Staff");
+                            
                             Console.WriteLine("\t[1]-Request an appointment" + "\n\t[2]-View appointment schedules" + "\n\t[3]-Logout");
 
                             Console.Write("\nEnter operation: ");
@@ -257,31 +256,6 @@ namespace DSTALGO_Lactao_n_Magpatoc
 
                                     //}
 
-                                    //Console.Write("Search customer name : ");
-                                    //Console.ForegroundColor = ConsoleColor.Yellow;
-                                    //string custName = Convert.ToString(Console.ReadLine());
-                                    //Console.ForegroundColor = ConsoleColor.Gray;
-                                    //Console.WriteLine("Appointment(s) found : ");
-
-                                    //if (headsUpCustomer.ContainsValue(custName))
-                                    //{
-                                    //    Console.ForegroundColor = ConsoleColor.DarkYellow;
-                                    //    Console.WriteLine("\t" + item.Key + "\t" + item.Value);
-                                    //    Console.ForegroundColor = ConsoleColor.Gray;
-
-
-                                    //    //foreach (KeyValuePair<string, string> item in headsUpCustomer)
-                                    //    //{
-
-                                    //    //}
-
-                                    //}
-                                    //else
-                                    //{
-                                    //    Console.ForegroundColor = ConsoleColor.Red;
-                                    //    Console.WriteLine("\nNo Appointment found");
-                                    //    Console.ForegroundColor = ConsoleColor.Gray;
-                                    //}
                                     Console.ReadKey();
                                     Console.WriteLine();
 
