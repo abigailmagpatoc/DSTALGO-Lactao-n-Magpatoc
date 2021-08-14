@@ -122,11 +122,11 @@ namespace DSTALGO_Lactao_n_Magpatoc
             }
         }
 
-        public string Peek()
+        public string[] Peek()
         {
             if (count > 0)
             {
-                string item = array[front][0];
+                string[] item = array[front];
                 return item;
             }
             else
@@ -143,13 +143,13 @@ namespace DSTALGO_Lactao_n_Magpatoc
             {
                 //Console.WriteLine(array[index]);
                 Console.Write("\n");
-                for (int i = index; i < array[index].Length; i++)
+                for (int i = 0; i < array[index].Length; i++)
                 {
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
                     Console.Write("\t" + array[index][i]);
                     Console.ForegroundColor = ConsoleColor.Gray;
                 }
-                index = (index + 1) % array.Length;
+                index = (index + 1) % array[index].Length;
                 counter--;
             }
 
