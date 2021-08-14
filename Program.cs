@@ -130,7 +130,6 @@ namespace DSTALGO_Lactao_n_Magpatoc
                                     Console.ReadKey();
                                 }
                             }
-
                             //view schedule
                             if (choice == 2)
                             {
@@ -142,8 +141,7 @@ namespace DSTALGO_Lactao_n_Magpatoc
                                     Console.ForegroundColor = ConsoleColor.Gray;
                                 }
                                 Console.ReadKey();
-                            }
-                            
+                            } 
                             //logout
                             if (choice == 3)
                             {
@@ -375,8 +373,5 @@ namespace DSTALGO_Lactao_n_Magpatoc
             Console.ForegroundColor = ConsoleColor.Gray;
             return inp;
         }
-
     }
-   
-
 }

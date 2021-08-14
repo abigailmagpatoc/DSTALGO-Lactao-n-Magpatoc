@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DSTALGO_Lactao_n_Magpatoc;
 
+
 namespace DSTALGO_Lactao_n_Magpatoc
 {
     class CircularQueue
@@ -139,6 +140,7 @@ namespace DSTALGO_Lactao_n_Magpatoc
         {
             return array;
         }
+
 
     }
 }
