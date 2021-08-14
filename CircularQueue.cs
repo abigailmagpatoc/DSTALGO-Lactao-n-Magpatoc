@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DSTALGO_Lactao_n_Magpatoc;
+using System.Globalization;
 
 
 namespace DSTALGO_Lactao_n_Magpatoc
@@ -51,20 +52,31 @@ namespace DSTALGO_Lactao_n_Magpatoc
 
         public void Sort() // bug* still needs work. itemInto cannot be null but queue has null slots
         {
-            for (int i = 1; i < array.Length; i++)
+            
+            string[][] tempArray = GetArray(); 
+
+            for (int i = 1; i < tempArray.Length; i++)
             {
-                string? itemInto = array[i][1];
+                DateTime hoursInto = new DateTime();
+                DateTime hoursTemp = new DateTime();
+                string format = "hhmmtt";
+                string itemInto = tempArray[i][1];
+                hoursInto = DateTime.ParseExact(itemInto, format, CultureInfo.InvariantCulture);
                 int j;
                 for (j = i; j > 0; j--)
                 {
-                    if (itemInto.CompareTo(array[j][1]) == -1)
+                    hoursTemp = DateTime.ParseExact(tempArray[j][1], format, CultureInfo.InvariantCulture);
+
+                    if (hoursInto.CompareTo(hoursTemp) == -1)
                     {
-                        array[j][1] = array[j - 1][1];
+                        tempArray[j][1] = tempArray[j - 1][1];
                     }
                     else break;
                 }
-                array[j][1] = itemInto;
+                tempArray[j][1] = itemInto;
             }
+            array = tempArray;
+
             //int lowerB = 0;
             //int upperB = index;
             //int midIndex;
@@ -138,9 +150,20 @@ namespace DSTALGO_Lactao_n_Magpatoc
 
         public string[][] GetArray()
         {
-            return array;
+            int counter = count;
+            string[][] tempArr = new string[counter][];
+            for (int i = 0; i < tempArr.Length; i++)
+            {
+                tempArr[i] = array[i];
+            }
+            return tempArr;
         }
 
+        public string[] GetListArray(int dim)
+        {
+            string[] tempArr = array[dim];
+            return tempArr;
+        }
 
     }
 }

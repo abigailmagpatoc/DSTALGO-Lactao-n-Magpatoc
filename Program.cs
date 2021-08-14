@@ -304,8 +304,8 @@ namespace DSTALGO_Lactao_n_Magpatoc
                                 {
                                     Console.WriteLine("\tConfirmed Appointments");
                                     Console.Write("\tID\tTime\tCustomer   Treatment\n");
-                                    finalQue.ViewQAppoints();
                                     finalQue.Sort();
+                                    finalQue.ViewQAppoints();
                                     Console.ReadKey();
                                     Console.WriteLine();
                                 }
