@@ -34,9 +34,9 @@ namespace DSTALGO_Lactao_n_Magpatoc
         }
         public void Enqueue(string[] arr)
         {
-            if (count < array.Length) //bug* object reference?
+            if (count < array.Length)
             {
-                rear++;
+                rear = (rear + 1) % array.Length;
                 array[rear] = arr;
                 //for (int i = 0; i < array[rear].Length; i++)
                 //{
@@ -60,22 +60,28 @@ namespace DSTALGO_Lactao_n_Magpatoc
                 DateTime hoursInto = new DateTime();
                 DateTime hoursTemp = new DateTime();
                 string format = "hhmmtt";
-                string itemInto = tempArray[i][1];
-                hoursInto = DateTime.ParseExact(itemInto, format, CultureInfo.InvariantCulture);
+                string[] arrInto = tempArray[i];
+                hoursInto = DateTime.ParseExact(tempArray[i][1], format, CultureInfo.InvariantCulture);
                 int j;
                 for (j = i; j > 0; j--)
                 {
-                    hoursTemp = DateTime.ParseExact(tempArray[j][1], format, CultureInfo.InvariantCulture);
+                    hoursTemp = DateTime.ParseExact(tempArray[j - 1][1], format, CultureInfo.InvariantCulture);
 
                     if (hoursInto.CompareTo(hoursTemp) == -1)
                     {
-                        tempArray[j][1] = tempArray[j - 1][1];
+                        tempArray[j] = tempArray[j - 1];
                     }
-                    else break;
+                    else 
+                        break;
                 }
-                tempArray[j][1] = itemInto;
+                tempArray[j] = arrInto;
             }
-            array = tempArray;
+
+            for (int i = 0; i < tempArray.Length; i++)
+            {
+                array[i] = tempArray[i];
+            }
+
 
             //int lowerB = 0;
             //int upperB = index;
@@ -106,7 +112,7 @@ namespace DSTALGO_Lactao_n_Magpatoc
             if (count > 0)
             {
                 string item = array[front][0];
-                front++;
+                front = (front + 1) % array.Length;
                 count--;
                 return item;
             }
@@ -136,6 +142,7 @@ namespace DSTALGO_Lactao_n_Magpatoc
             while(counter > 0)
             {
                 //Console.WriteLine(array[index]);
+                Console.Write("\n");
                 for (int i = index; i < array[index].Length; i++)
                 {
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
