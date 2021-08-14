@@ -188,7 +188,7 @@ namespace DSTALGO_Lactao_n_Magpatoc
                         {
                             while (true)
                             {
-                                Console.WriteLine("\t[1]-View requested appointments" + "\n\t[2]-Search appointment" + "\n\t[3]-Add confirmed appointment" + 
+                                Console.WriteLine("\t[1]-View requested appointments" + "\n\t[2]-Search requested appointments" + "\n\t[3]-Add confirmed appointment" + 
                                     "\n\t[4]-Cancel/finish appointment" + "\n\t[5]-View confirmed appointments" + "\n\t[6]-Logout");
                                 Console.Write("What are you here for? ");
                                 Console.ForegroundColor = ConsoleColor.Green;
@@ -320,8 +320,8 @@ namespace DSTALGO_Lactao_n_Magpatoc
                                     {
                                         finalQue.Dequeue();
                                         Console.ForegroundColor = ConsoleColor.Green;
-                                        Console.Write("\tRemoving queue...");
-                                        Console.WriteLine("\nAppointment has been removed! Next appointment is : ");
+                                        Console.WriteLine("\tRemoving queue...");
+                                        Console.WriteLine("\tAppointment has been removed! Next appointment is : ");
                                         Console.ForegroundColor = ConsoleColor.Yellow;
                                         Console.Write("\tID\tTime\tCustomer   Treatment\n");
                                         foreach (string item in finalQue.Peek())
@@ -330,10 +330,16 @@ namespace DSTALGO_Lactao_n_Magpatoc
                                             Console.Write("\t" + item);
                                             Console.ForegroundColor = ConsoleColor.Gray;
                                         }
+                                        Console.WriteLine();
                                         Console.ReadKey();
                                     }
                                     else if (cancel == 0)
+                                    {
+                                        Console.WriteLine();
+                                        Console.ReadKey();
                                         continue;
+                                    }
+                                        
                                 }
                                 //view confirmed appointments
                                 else if (choice == 5)
